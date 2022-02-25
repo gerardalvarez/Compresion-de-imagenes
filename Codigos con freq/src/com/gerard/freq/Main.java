@@ -1,4 +1,4 @@
-package freq;
+package com.gerard.freq;
 
 // Java Program for Canonical Huffman Encoding
 

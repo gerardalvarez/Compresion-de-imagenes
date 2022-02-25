@@ -1,4 +1,4 @@
-package longitud;
+package com.gerard.longitud;
 
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
