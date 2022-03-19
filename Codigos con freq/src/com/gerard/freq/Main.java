@@ -193,10 +193,8 @@ class Canonical_Huffman {
 
     public static void main(String args[]) throws IOException
     {
-
-        String m="The Island of Doctor Moreau, by H. G. Wells. [...] XIV. DOCTOR MOREAU EXPLAINS. AND now, Prendick, I will explain, said Doctor Moreau, so soon as we had eaten and drunk. I must confess that you are the most dictatorial guest I ever entertained. I warn you that this is the last I shall do to oblige you. The next thing you threaten to commit suicide about, I shan't do,--even at some personal inconvenience. He sat in my deck chair, a cigar half consumed in his white, dexterous-looking fingers. The light of the swinging lamp fell on his white hair; he stared through the little window out at the starlight. I sat as far away from him as possible, the table between us and the revolvers to hand. Montgomery was not present.";
+        String m="The Island of Doctor Moreau, by H. G. Wells. [...] The Leopard-man had happened to go under: that was all the difference. Poor brute! Poor brutes! I began to see the viler aspect of Moreau's cruelty. I had not thought before of the pain and trouble that came to these poor victims after they had passed from Moreau's hands. I had shivered only at the days of actual torment in the enclosure. But now that seemed to me the lesser part. Before, they had been beasts, their instincts fitly adapted to their surroundings, and happy as living things may be. Now they stumbled in the shackles of humanity, lived in a fear that never died, fretted by a law they could not understand; their mock-human existence, begun in an agony, was one long internal struggle, one long dread of Moreau--and for what? It was the wantonness of it that stirred me.";
         Map<String,Integer> a= tabla(m,1);
-
 
 
         String[] chararr = { "a", "b", "c", "d" ,"e"};
@@ -204,8 +202,8 @@ class Canonical_Huffman {
         int[] arr2 = new int[a.size()];
         intro(a,arr1,arr2);
         SortedMap<String,String> m1=new TreeMap<>();
-       int[] freq = { 124,310, 31, 248 ,248 };
-      testCanonicalHC(a.size(), arr1, arr2,m1);
+       int[] freq = { 40,680,40,200 ,640};
+      testCanonicalHC(a.size(),arr1,arr2,m1);
         System.out.println(m1);
     }
 
