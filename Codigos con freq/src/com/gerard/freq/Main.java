@@ -5,11 +5,14 @@ package com.gerard.freq;
 import java.io.*;
 import java.util.*;
 
+import static com.gerard.huff.Main.tabla;
+import static com.gerard.longitud.Main.toBinary;
+
 // Nodes of Huffman tree
 class Node {
 
     int data;
-    char c;
+    String c;
 
     Node left;
     Node right;
@@ -33,12 +36,12 @@ class Canonical_Huffman {
     // code lengths(sorted) as keys
     // and corresponding(sorted)
     // set of characters as values
-    static TreeMap<Integer, TreeSet<Character> > data;
+    static TreeMap<Integer, TreeSet<String> > data;
 
     // Constructor to initialize the Treemap
     public Canonical_Huffman()
     {
-        data = new TreeMap<Integer, TreeSet<Character> >();
+        data = new TreeMap<Integer, TreeSet<String> >();
     }
 
     // Recursive function
@@ -56,7 +59,7 @@ class Canonical_Huffman {
             // check if key is present or not.
             // If not present add a new treeset
             // as value along with the key
-            data.putIfAbsent(code_length, new TreeSet<Character>());
+            data.putIfAbsent(code_length, new TreeSet<String>());
 
             // c is the character in the node
             data.get(code_length).add(root.c);
@@ -68,7 +71,7 @@ class Canonical_Huffman {
         code_gen(root.right, code_length + 1);
     }
 
-    static void testCanonicalHC(int n, char chararr[], int freq[])
+    static void testCanonicalHC(int n, String[] chararr, int[] freq, SortedMap<String, String> m1)
     {
 
         // min-priority queue(min-heap).
@@ -115,7 +118,7 @@ class Canonical_Huffman {
             // to the sum of the frequency of the two nodes
             // assigning values to the f node.
             nodeobj.data = x.data + y.data;
-            nodeobj.c = '-';
+            nodeobj.c = "-";
 
             // first extracted node as left child.
             nodeobj.left = x;
@@ -151,8 +154,9 @@ class Canonical_Huffman {
             while (it.hasNext()) {
 
                 // Display the canonical codes
-                System.out.println(it.next() + ":"
-                        + Integer.toBinaryString(c_code));
+//                System.out.println(it.next() + ":"
+//                        + toBinary(c_code,curr_len));
+                m1.put(it.next().toString(),toBinary(c_code,curr_len));
 
                 // if values set is not
                 // completed or if it is
@@ -173,11 +177,37 @@ class Canonical_Huffman {
         }
     }
 
+    private static void intro(Map<String, Integer> a, String[] arr1, int[] arr2) {
+
+        Set entries = a.entrySet();
+        Iterator entriesIterator = entries.iterator();
+        int i = 0;
+        while(entriesIterator.hasNext()){
+            Map.Entry mapping = (Map.Entry) entriesIterator.next();
+            arr1[i] = mapping.getKey().toString();
+            arr2[i] = (int)mapping.getValue();
+            i++;
+        }
+    }
+
+
     public static void main(String args[]) throws IOException
     {
-        int n = 4;
-        char[] chararr = { 'a', 'b', 'c', 'd' };
-        int[] freq = { 10,200 , 1, 100 };
-        testCanonicalHC(n, chararr, freq);
+
+        String m="The Island of Doctor Moreau, by H. G. Wells. [...] XIV. DOCTOR MOREAU EXPLAINS. AND now, Prendick, I will explain, said Doctor Moreau, so soon as we had eaten and drunk. I must confess that you are the most dictatorial guest I ever entertained. I warn you that this is the last I shall do to oblige you. The next thing you threaten to commit suicide about, I shan't do,--even at some personal inconvenience. He sat in my deck chair, a cigar half consumed in his white, dexterous-looking fingers. The light of the swinging lamp fell on his white hair; he stared through the little window out at the starlight. I sat as far away from him as possible, the table between us and the revolvers to hand. Montgomery was not present.";
+        Map<String,Integer> a= tabla(m,1);
+
+
+
+        String[] chararr = { "a", "b", "c", "d" ,"e"};
+        String[] arr1 = new String[a.size()];
+        int[] arr2 = new int[a.size()];
+        intro(a,arr1,arr2);
+        SortedMap<String,String> m1=new TreeMap<>();
+       int[] freq = { 124,310, 31, 248 ,248 };
+      testCanonicalHC(a.size(), arr1, arr2,m1);
+        System.out.println(m1);
     }
+
+
 }

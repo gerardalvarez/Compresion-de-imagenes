@@ -69,7 +69,7 @@ public class Main {
 
         Map<String,Integer> a;
 
-        a=tabla(s,2);
+        a=tabla(s,1);
 
         System.out.println(a);
     }

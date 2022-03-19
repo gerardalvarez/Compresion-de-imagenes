@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="Codigos canonicos por longitudes" />
+    <orderEntry type="module" module-name="Frecuencias" />
   </component>
 </module>

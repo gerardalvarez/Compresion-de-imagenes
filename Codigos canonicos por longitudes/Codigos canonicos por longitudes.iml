@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="Codigos con freq" exported="" />
+    <orderEntry type="module" module-name="Frecuencias" exported="" />
   </component>
 </module>
